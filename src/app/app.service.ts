@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, map, tap } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { catchError, tap } from 'rxjs/operators';
 
 import { Data } from './data';
 
@@ -9,21 +9,18 @@ import { Data } from './data';
   providedIn: 'root'
 })
 export class AppService {
-
-	private url = 'https://hn.algolia.com/api/v1/search_by_date?tags=story';
-	private httpOptions = {
-	  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-	};	
-
+  
+  private url = 'https://hn.algolia.com/api/v1/search_by_date?tags=story';
+	
   constructor(private http: HttpClient) { }
 
   getData(): Observable<Data[]>
   {
-  	return this.http.get<Data[]>(this.url)
+     return this.http.get<Data[]>(this.url)
   	.pipe(
   	  tap(_ => this.log('getData request')),
-      catchError(this.handleError<Data[]>('getData', []))
-    );
+          catchError(this.handleError<Data[]>('getData', []))
+      );
   }
 
   private log(message: string) {
