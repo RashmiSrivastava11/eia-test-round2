@@ -11,6 +11,7 @@ Following changes done:
 6) A modal added to disaply raw json data for respective post. Modal opens on clicking View button.
 Modal can be closed using clicking Close button / X button / backdrop.
 7) For invalid route, Page Not FOund compoenent is added.
+8) ng-bootstrap table filter applied on Title field. On typing text in input box, matched Title column will highlight. 
 
 ## Development server
 
